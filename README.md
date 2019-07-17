@@ -1,20 +1,26 @@
-# 概览
-一个用于帮助OnActivityResult，PermissionRequest 接耦的库，不需要依赖Activity中的回调.
+# 概览  
+一个用于帮助OnActivityResult，PermissionRequest 接耦的库，不需要依赖Activity中的回调.  
 
-### 与RxActivityResult和RxPermission有什么不同？
+### 与RxActivityResult和RxPermission有什么不同？  
 1. 不需要依赖RxJava，但也支持链式调用.
 2. 功能更丰富，两者结合，使用更加方便，并支持部分国产Rom的权限判断，跳转权限设置页面.
 3. 代码量少，可以选择拷贝代码直接放入项目.
 
 
 ## 开始使用 （minSdkVersion >= 14）
-###
+
+[![](https://www.jitpack.io/v/DingProg/ActivityResultPermission.svg)](https://www.jitpack.io/#DingProg/ActivityResultPermission)
+
 ```
 allprojects {
     repositories {
         ...
         maven { url 'https://jitpack.io' }
     }
+}
+
+dependencies {
+	implementation 'com.github.DingProg:ActivityResultPermission:v0.0.1'
 }
 
 ```
@@ -37,9 +43,9 @@ allprojects {
             Toast.makeText(MainActivity.this, "openActivity with result cancel", Toast.LENGTH_SHORT).show();
         }
  });
-```
+``` 
 
-### Permissions处理
+### Permissions处理   
 ```java
 ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMERA).permissions(new Listener.PermissionResultListener() {
         @Override
@@ -66,8 +72,8 @@ ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMER
             }
         }
     });
-```
-如果对于一些非正常Rom（如oppo，vivo手机），可以调用PermissionUtils.checkSelfPermissionsWhitNoNoramal(context,permissions);
+```   
+如果对于一些非正常Rom（如oppo，vivo手机），可以调用PermissionUtils.checkSelfPermissionsWhitNoNoramal(context,permissions);   
 
 请求权限时，调用ActivityResultPermissionUtils.requestPermissions(this, permission).permissionsWithoutCheck();
 
@@ -78,8 +84,7 @@ ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMER
 - 一种是启动一个新的Activity来判断权限，获取ActivityForResult的结果.
 - 一种是添加一个Fragment，在Fragment中获取回调，进行解耦合.
 
-RxActivityResult，RxPermission采用都是前者，而此处采用了后者，使用Fragment，优点Fragment占用资源更少.
-
+RxActivityResult，RxPermission采用都是前者，而此处采用了后者，使用Fragment，优点Fragment占用资源更少.  
 
 
 
