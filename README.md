@@ -1,10 +1,10 @@
 # 概览  
-一个用于帮助OnActivityResult，PermissionRequest 接耦的库，不需要依赖Activity中的回调.  
+一个用于帮助OnActivityResult，PermissionRequest 解耦合的库，不需要依赖Activity中的回调.
 
-### 与RxActivityResult和RxPermission有什么不同？  
+### 与RxActivityResult和RxPermission有什么不同？
 1. 不需要依赖RxJava，但也支持链式调用.
 2. 功能更丰富，两者结合，使用更加方便，并支持部分国产Rom的权限判断，跳转权限设置页面.
-3. 代码量少，可以选择拷贝代码直接放入项目.
+3. 代码量少，可以选择拷贝代码直接放入项目.（核心代码不到 400行）
 
 
 ## 开始使用 （minSdkVersion >= 14）
@@ -43,9 +43,9 @@ dependencies {
             Toast.makeText(MainActivity.this, "openActivity with result cancel", Toast.LENGTH_SHORT).show();
         }
  });
-``` 
+```
 
-### Permissions处理   
+### Permissions处理
 ```java
 ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMERA).permissions(new Listener.PermissionResultListener() {
         @Override
@@ -72,15 +72,15 @@ ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMER
             }
         }
     });
-```   
-如果对于一些非正常Rom（如oppo，vivo手机），可以调用PermissionUtils.checkSelfPermissionsWhitNoNoramal(context,permissions);   
+```
+如果对于一些非正常Rom（如oppo，vivo手机），可以调用PermissionUtils.checkSelfPermissionsWhitNoNoramal(context,permissions);
 
 请求权限时，调用ActivityResultPermissionUtils.requestPermissions(this, permission).permissionsWithoutCheck();
 
 关于更多请查看sample
 
 ### 原理
-接耦合Activity中的回调，有两种方式
+解耦合合Activity中的回调，有两种方式
 - 一种是启动一个新的Activity来判断权限，获取ActivityForResult的结果.
 - 一种是添加一个Fragment，在Fragment中获取回调，进行解耦合.
 
