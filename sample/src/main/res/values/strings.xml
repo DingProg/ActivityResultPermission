@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AcitvityResultPermission</string>
+    <string name="open_second_activity_for_result">Open Second Activity For Result</string>
+
+    <string name="back">back cancel</string>
+    <string name="back_with_result">back with result</string>
+    <string name="openCamera">openCamera</string>
+</resources>
