@@ -2,6 +2,7 @@ package com.ding.library;
 
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class ReplaceFragment extends Fragment {
         if(iHandle != null){
             iHandle.onActivityResultHandle(resultCode,data);
         }
+        remove();
     }
 
     @Override
@@ -42,6 +44,16 @@ public class ReplaceFragment extends Fragment {
         if (requestCode != PERMISSION_REQUEST_CODE) return;
         if(iHandle != null){
             iHandle.onRequestPermissionsResultHandle(getActivity(),permissions,grantResults);
+        }
+        remove();
+    }
+
+    private void remove(){
+        if(getActivity() != null && !getActivity().isFinishing()){
+            FragmentManager fragmentManager = getActivity().getFragmentManager();
+            if(fragmentManager != null){
+                fragmentManager.beginTransaction().remove(this).commitAllowingStateLoss();
+            }
         }
     }
 }
