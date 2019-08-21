@@ -20,7 +20,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.DingProg:ActivityResultPermission:v0.0.1'
+	implementation 'com.github.DingProg:ActivityResultPermission:v0.0.2'
 }
 
 ```
