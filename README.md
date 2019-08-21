@@ -84,7 +84,10 @@ ActivityResultPermissionUtils.requestPermissions(this, Manifest.permission.CAMER
 - 一种是启动一个新的Activity来判断权限，获取ActivityForResult的结果.
 - 一种是添加一个Fragment，在Fragment中获取回调，进行解耦合.
 
-RxActivityResult，RxPermission采用都是前者，而此处采用了后者，使用Fragment，优点Fragment占用资源更少.  
+RxActivityResult，RxPermission采用都是前者，而此处采用了后者，使用Fragment，优点Fragment占用资源更少.
+
+## 关于适配 AndroidX
+查看xlibrary下的代码
 
 
 
